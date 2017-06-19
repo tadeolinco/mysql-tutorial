@@ -20,22 +20,22 @@ const router = Router();
 // Here we are saying that when the client
 // requests for the route `/api/users` we do the below
 router.get('/', (req, res) => {
-  // You may ask what Ctrl, or controller, is.
-  // Think of Ctrl as a set of generic functions that you can use
-  // for the routes. These are where the database manipulations really
-  // take place. The router shouldn't care how exactly the controller
-  // manages this. It just needs to pass in the correct parameters.
-  // This leaves us flexible in changing what database we are using.
+    // You may ask what Ctrl, or controller, is.
+    // Think of Ctrl as a set of generic functions that you can use
+    // for the routes. These are where the database manipulations really
+    // take place. The router shouldn't care how exactly the controller
+    // manages this. It just needs to pass in the correct parameters.
+    // This leaves us flexible in changing what database we are using.
 
-  // In this case, getAll() accepts one parameter, which is a callback.
-  // Since databases queries are asynchronous, the callback function
-  // is called once the the queries is done. Normally the patterns
-  // for these callbacks are (error, results)
-  Ctrl.getAll((err, pets) => {
-    // this is fired once the query done by the controller is done
-    if (err) return res.status(500).json(err);
-    res.json(pets);
-  });
+    // In this case, getAll() accepts one parameter, which is a callback.
+    // Since databases queries are asynchronous, the callback function
+    // is called once the the queries is done. Normally the patterns
+    // for these callbacks are (error, results)
+    Ctrl.getAll((err, pets) => {
+        // this is fired once the query done by the controller is done
+        if (err) return res.status(500).json(err);
+        res.json(pets);
+    });
 });
 
 // Move on to src/entities/pet/pet.controller.js
@@ -52,12 +52,12 @@ router.get('/', (req, res) => {
  * @apiSuccess {String} name Name of pet.
  */
 router.get('/:pet_id', (req, res) => {
-  const id = +req.params.pet_id;
-  Ctrl.getOne(id, (err, pet) => {
-    if (err) return res.status(500).json(err);
-    if (!err && !pet) return res.status(404).json(pet);
-    res.json(adtype);
-  });
+    const id = +req.params.pet_id;
+    Ctrl.getOne(id, (err, pet) => {
+        if (err) return res.status(500).json(err);
+        if (!err && !pet) return res.status(404).json(pet);
+        res.json(adtype);
+    });
 });
 
 /**
@@ -73,11 +73,11 @@ router.get('/:pet_id', (req, res) => {
  * @apiSuccess {Number} users.pet_id    Id of pet.
  */
 router.get('/:pet_id/owners', (req, res) => {
-  const id = +req.params.pet_id;
-  Ctrl.getOwners(id, (err, owners) => {
-    if (err) return res.status(500).json(err);
-    res.json(owners);
-  });
+    const id = +req.params.pet_id;
+    Ctrl.getOwners(id, (err, owners) => {
+        if (err) return res.status(500).json(err);
+        res.json(owners);
+    });
 });
 
 /**
@@ -93,10 +93,10 @@ router.get('/:pet_id/owners', (req, res) => {
  * @apiSuccess {String} name Name of pet.
  */
 router.post('/', (req, res) => {
-  Ctrl.create(req.body, (err, pet) => {
-    if (err) return res.status(500).json(err);
-    res.json(pet);
-  });
+    Ctrl.create(req.body, (err, pet) => {
+        if (err) return res.status(500).json(err);
+        res.json(pet);
+    });
 });
 
 /**
@@ -113,11 +113,11 @@ router.post('/', (req, res) => {
  * @apiSuccess {String} name Name of pet.
  */
 router.put('/:pet_id', (req, res) => {
-  const id = +req.params.pet_id;
-  Ctrl.update(id, req.body, (err, pet) => {
-    if (err) return res.status(500).json(err);
-    res.json(pet);
-  });
+    const id = +req.params.pet_id;
+    Ctrl.update(id, req.body, (err, pet) => {
+        if (err) return res.status(500).json(err);
+        res.json(pet);
+    });
 });
 /**
  * @api {delete} /api/pets/:pet_id 6. Delete a Pet
@@ -127,12 +127,12 @@ router.put('/:pet_id', (req, res) => {
  * @apiParam {Number} pet_id Unique Id of Pet to be deleted.
  */
 router.delete('/:pet_id', (req, res) => {
-  const id = +req.params.pet_id;
-  Ctrl.delete(id, (err, results) => {
-    if (err) return res.status(500).json(err);
-    if (!err && !results) return res.status(404).json(err);
-    res.json(null);
-  });
+    const id = +req.params.pet_id;
+    Ctrl.delete(id, (err, results) => {
+        if (err) return res.status(500).json(err);
+        if (!err && !results) return res.status(404).json(err);
+        res.json(null);
+    });
 });
 
 export default router;

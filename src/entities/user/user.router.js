@@ -13,10 +13,10 @@ const router = Router();
  * @apiSuccess {String} users.name      Name of user
  */
 router.get('/', (req, res) => {
-  Ctrl.getAll((err, users) => {
-    if (err) return res.status(500).json(err);
-    res.json(users);
-  });
+    Ctrl.getAll((err, users) => {
+        if (err) return res.status(500).json(err);
+        res.json(users);
+    });
 });
 
 /**
@@ -30,12 +30,12 @@ router.get('/', (req, res) => {
  * @apiSuccess {String} name      Name of user
  */
 router.get('/:user_id', (req, res) => {
-  const id = +req.params.user_id;
-  Ctrl.getOne(id, (err, user) => {
-    if (err) return res.status(500).json(err);
-    if (!err && !user) return res.status(404).json(user);
-    res.json(adtype);
-  });
+    const id = +req.params.user_id;
+    Ctrl.getOne(id, (err, user) => {
+        if (err) return res.status(500).json(err);
+        if (!err && !user) return res.status(404).json(user);
+        res.json(adtype);
+    });
 });
 
 /**
@@ -52,11 +52,11 @@ router.get('/:user_id', (req, res) => {
  * @apiSuccess {Number} pets.user_id Unique ID of user that owns the pet.
  */
 router.get('/:user_id/pets', (req, res) => {
-  const id = +req.params.user_id;
-  Ctrl.getPets(id, (err, pets) => {
-    if (err) return res.status(500).json(err);
-    res.json(pets);
-  });
+    const id = +req.params.user_id;
+    Ctrl.getPets(id, (err, pets) => {
+        if (err) return res.status(500).json(err);
+        res.json(pets);
+    });
 });
 
 /**
@@ -71,10 +71,10 @@ router.get('/:user_id/pets', (req, res) => {
  */
 
 router.post('/', (req, res) => {
-  Ctrl.create(req.body, (err, user) => {
-    if (err) return res.status(500).json(err);
-    res.json(user);
-  });
+    Ctrl.create(req.body, (err, user) => {
+        if (err) return res.status(500).json(err);
+        res.json(user);
+    });
 });
 
 /**
@@ -90,12 +90,12 @@ router.post('/', (req, res) => {
  */
 
 router.post('/:user_id/pets/:pet_id', (req, res) => {
-  const user_id = +req.params.user_id;
-  const pet_id = +req.params.pet_id;
-  Ctrl.assignPet(user_id, pet_id, (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results);
-  });
+    const user_id = +req.params.user_id;
+    const pet_id = +req.params.pet_id;
+    Ctrl.assignPet(user_id, pet_id, (err, results) => {
+        if (err) return res.status(500).json(err);
+        res.json(results);
+    });
 });
 
 /**
@@ -111,11 +111,11 @@ router.post('/:user_id/pets/:pet_id', (req, res) => {
  */
 
 router.put('/:user_id', (req, res) => {
-  const id = +req.params.user_id;
-  Ctrl.update(id, req.body, (err, user) => {
-    if (err) return res.status(500).json(err);
-    res.json(user);
-  });
+    const id = +req.params.user_id;
+    Ctrl.update(id, req.body, (err, user) => {
+        if (err) return res.status(500).json(err);
+        res.json(user);
+    });
 });
 
 /**
@@ -127,12 +127,12 @@ router.put('/:user_id', (req, res) => {
  */
 
 router.delete('/:user_id', (req, res) => {
-  const id = +req.params.user_id;
-  Ctrl.delete(id, (err, results) => {
-    if (err) return res.status(500).json(err);
-    if (!err && !results) return res.status(404).json(err);
-    res.json(null);
-  });
+    const id = +req.params.user_id;
+    Ctrl.delete(id, (err, results) => {
+        if (err) return res.status(500).json(err);
+        if (!err && !results) return res.status(404).json(err);
+        res.json(null);
+    });
 });
 
 /**
@@ -145,13 +145,13 @@ router.delete('/:user_id', (req, res) => {
  */
 
 router.delete('/:user_id/pets/:pet_id', (req, res) => {
-  const user_id = +req.params.user_id;
-  const pet_id = +req.params.pet_id;
-  Ctrl.disownPet(user_id, pet_id, (err, results) => {
-    if (err) return res.status(500).json(err);
-    if (!err && !results) return res.status(404).json(err);
-    res.json(null);
-  });
+    const user_id = +req.params.user_id;
+    const pet_id = +req.params.pet_id;
+    Ctrl.disownPet(user_id, pet_id, (err, results) => {
+        if (err) return res.status(500).json(err);
+        if (!err && !results) return res.status(404).json(err);
+        res.json(null);
+    });
 });
 
 export default router;
