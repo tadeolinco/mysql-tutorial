@@ -1,0 +1,35 @@
+{
+  "name": "mysql-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development node_modules/nodemon/bin/nodemon.js -- node_modules/babel-cli/bin/babel-node src/server.js",
+    "apidoc": "node_modules/apidoc/bin/apidoc -i src -o apidoc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.6",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "lint-staged": "^3.6.1",
+    "nodemon": "^1.11.0",
+    "prettier": "^1.4.4"
+  },
+  "apidoc": {
+    "name": "Sample API",
+    "order": [
+      "User",
+      "Pet"
+    ]
+  }
+}
