@@ -290,6 +290,7 @@ Open up your terminal and run:
     npm start
 
 Go to your favorite browser and go to localhost:3001 to see the api docs
+Or use POSTman to access the api
 ## Project Structure
     .
     ├── node_modules

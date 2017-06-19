@@ -100,7 +100,7 @@ router.post('/', (req, res) => {
 });
 
 /**
- * @api {put} /api/pets/:pet_id 5. Create a Pet
+ * @api {put} /api/pets/:pet_id 5. Update a Pet
  * @apiName UpdatePet
  * @apiGroup Pet
  * 
